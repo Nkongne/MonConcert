@@ -1,0 +1,41 @@
+{% extends 'concert/index.html' %}
+{% load static %}
+{% block title %}payer pass{% endblock %}
+  <link rel="stylesheet" href="{% static 'css/style.css'%} "type="text/css"/>
+{% block content %}
+
+    <form class="form-horizontal" role="form" method="POST" id="af">{% csrf_token %}
+        <div class="form-group">
+            <label for="description" class="col-lg-2 col-sm-2 control-label">description de l'evenement:</label>
+            <div class="col-lg-10">
+            {{form.description}}
+           </div>
+        </div>
+         <div class="form-group">
+            <label for="date_event" class="col-lg-2 col-sm-2 control-label">Date et heure de l'evenement:</label>
+            <div class="col-lg-10">
+            {{form.heureEvent}}
+           </div>
+        </div>
+         <div class="form-group">
+            <label for="lieu" class="col-lg-2 col-sm-2 control-label">lieu de l'evenement:</label>
+            <div class="col-lg-10">
+            {{form.lieuEvent}}
+           </div>
+        </div>
+         <div class="form-group">
+            <label for="ticket" class="col-lg-2 col-sm-2 control-label">les tickets:</label>
+            <div class="col-lg-10">
+            {{form.ticket}}
+           </div>
+        </div>
+
+        <input type="submit" value="Enregistrer" class="btn btn-success"/>
+        <button type="button" class="btn btn-danger" onclick="window.history.back()">Annuler </button>
+
+
+
+
+    </form>
+
+{% endblock %}

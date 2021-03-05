@@ -1,0 +1,36 @@
+  version: '3.8'
+
+  services:
+    db:
+      image: postgres
+      restart: always
+
+      environment:
+        - POSTGRES_DB=concert
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+
+
+
+    live:
+      build:  .
+      container_name: live
+      command: python manage.py runserver 0.0.0.0:8000
+      volumes:
+        - .:/code
+
+      ports:
+        - "8000:8000"
+      depends_on:
+        - db
+      links:
+        - db:db
+    nginx:
+      image: nginx
+      ports:
+        - "80:80"
+      volumes:
+        - "./nginx:/etc/nginx/conf.d"
+        - "./media:/var/media"
+      depends_on:
+        - live
