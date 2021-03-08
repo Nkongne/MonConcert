@@ -7,7 +7,8 @@ class Ticket(models.Model):
            ('Reservation','Reservation')]
     montant=models.BigIntegerField(default=5000)
     type=models.CharField(max_length=20,choices=payer)
-
+    def __str__(self):
+        return  self.type
 class Meta:
     proxy=True
 

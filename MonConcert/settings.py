@@ -27,7 +27,7 @@ SECRET_KEY = 'lzly)5@mn@yv#fisqj1uw3w6ev06o#^=tp6agsp767&cu29v@0'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+SENDSMS_BACKEND = 'myapp.mysmsbackend.SmsBackend'
 
 # Application definition
 
@@ -38,7 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'concert'
+
+
 ]
 
 MIDDLEWARE = [
@@ -133,3 +136,15 @@ USE_TZ = True
 STATICFILES_DIRS = [os.path.join(BASE_DIR, '../static')]
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
+TWILIO_ACCOUNT_SID = 'ACe32013ee79c2ab915dc4146bc54dbced'
+TWILIO_AUTH_TOKEN = '98314715f8753fe04e2641e1d7627756'
+
+EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'nkongnedev@gmail.com'
+EMAIL_HOST_PASSWORD = 'mercidieu25mai1992'
+
+import django_heroku
+django_heroku.settings(locals())

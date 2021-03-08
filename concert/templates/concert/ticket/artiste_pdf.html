@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset="utf-8" />
+        <title>artistes_pdf</title>
+        <style type="text/css">
+@page {
+    size: A4;
+    margin: 2.5cm 1.5cm 2.5cm 1.5cm;
+
+
+}
+
+#footerContent {
+color: #666;
+font-size: 10pt;
+text-align: center;
+}
+table, th, td {
+  border: 1px solid black;
+    text-align: center;
+    border-spacing: 5px;
+}
+table tr:nth-child(even) {
+  background-color: #eee;
+}
+table tr:nth-child(odd) {
+  background-color: #fff;
+}
+table th {
+  color: white;
+  background-color: black;
+}
+th,td{
+    padding: 5px;
+}
+/* ... Other CSS Rules go here ... */
+</style>
+    </head>
+    <body>
+         <div>
+                <h1>liste des artistes invites</h1>
+
+
+                    <table style="width:100%">
+                      <caption>liste des artistes invites</caption>
+                        <tr>
+                        <th>Numero</th>
+                        <th>Nom</th>
+
+                        <th>Tel</th>
+                        <th>Email</th>
+                         <th>Evenement</th>
+
+                        </tr>
+                        {% for a in all_artistes%}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><b>{{ a.nom |upper}}</b></td>
+
+
+
+
+                            <td><b>{{ a.tel|upper }}</b></td>
+
+                            <td><b>{{ a.email }}</b></td>
+                            <td><b>{{ a.evenement }}</b></td>
+                        </tr>
+                        {% endfor %}
+
+
+
+
+            </table>
+
+        </div>
+
+<pdf:nextpage>
+<div>
+liste des artistes invites
+</div>
+<div id="footerContent">
+    imprime le {% now "Y-m-d" %} | Page <pdf:pagenumber> of <pdf:pagecount>
+</div>
+
+</pdf:nextpage>
+</body>
+</html>

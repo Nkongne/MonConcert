@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <meta charset="utf-8" />
+        <title>invites_pdf</title>
+        <style type="text/css">
+@page {
+    size: A4;
+    margin: 2.5cm 1.5cm 2.5cm 1.5cm;
+
+
+}
+
+#footerContent {
+color: #666;
+font-size: 10pt;
+text-align: center;
+}
+table, th, td {
+  border: 1px solid black;
+    text-align: center;
+    border-spacing: 5px;
+}
+table tr:nth-child(even) {
+  background-color: #eee;
+}
+table tr:nth-child(odd) {
+  background-color: #fff;
+}
+table th {
+  color: white;
+  background-color: black;
+}
+th,td{
+    padding: 5px;
+}
+/* ... Other CSS Rules go here ... */
+</style>
+    </head>
+    <body>
+         <div>
+                <h1>liste des invites</h1>
+
+
+                    <table style="width:100%">
+                      <caption>liste des invites</caption>
+                        <tr>
+                        <th>Numero</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Tel</th>
+                        <th>Email</th>
+
+                        <th>type de ticket</th>
+                        </tr>
+                        {% for i in all_invites %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td><b>{{ i.nom |upper}}</b></td>
+
+                            <td><b>{{ i.prenom |upper}} </b></td>
+
+
+                            <td><b>{{ i.tel|upper }}</b></td>
+
+                            <td><b>{{ i.email }}</b></td>
+                            <td><b>{{ i.ticket}}</b></td>
+                        </tr>
+                        {% endfor %}
+
+
+
+
+            </table>
+
+        </div>
+
+<pdf:nextpage>
+<div>
+liste des invites
+</div>
+<div id="footerContent">
+    imprime le {% now "Y-m-d" %} | Page <pdf:pagenumber> of <pdf:pagecount>
+</div>
+
+</pdf:nextpage>
+</body>
+</html>

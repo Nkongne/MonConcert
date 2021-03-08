@@ -21,7 +21,7 @@ from django.urls import path
 from django.conf import settings
 admin.autodiscover()
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('concert.urls'), name='concert'),
 
+    path('', include('concert.urls'), name='concert'),
+    path('admin/', admin.site.urls),
 ]
