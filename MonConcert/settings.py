@@ -133,9 +133,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATICFILES_DIRS = [os.path.join(BASE_DIR, '../static')]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, '../static')]
 STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
-STATIC_URL = '/static/'
+STATIC_URL = 'root/app/static/'
 TWILIO_ACCOUNT_SID = 'ACe32013ee79c2ab915dc4146bc54dbced'
 TWILIO_AUTH_TOKEN = '98314715f8753fe04e2641e1d7627756'
 
